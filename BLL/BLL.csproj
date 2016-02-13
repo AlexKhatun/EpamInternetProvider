@@ -49,6 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Binding\Repository.cs" />
+    <Compile Include="DbLogic\AdressDb.cs" />
+    <Compile Include="DbLogic\BaseDb.cs" />
+    <Compile Include="DbLogic\PurseDb.cs" />
+    <Compile Include="DbLogic\RateDb.cs" />
+    <Compile Include="DbLogic\RoleDb.cs" />
+    <Compile Include="DbLogic\ServiceDb.cs" />
+    <Compile Include="DbLogic\ServiceTypeDb.cs" />
+    <Compile Include="DbLogic\SubscribeDb.cs" />
+    <Compile Include="DbLogic\UserDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

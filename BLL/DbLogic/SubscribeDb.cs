@@ -1,47 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BOL.Models;
 using DAL.Abstract;
+using DAL.Concrete;
+using Ninject;
 
-namespace DAL.Concrete
+namespace BLL.DbLogic
 {
-    public  class EfSubscribeRepository : EfAllRepository, ISubscribeRepository
+    public class SubscribeDb : BaseDb
     {
+        private readonly ISubscribeRepository subscribeDb;
+
+        public SubscribeDb()
+        {
+            subscribeDb = repository.AppKernel.Get<EfSubscribeRepository>();
+        }
+
         public ICollection<Subscribe> GetAll()
         {
-            return db.Subscribe.ToList();
+            return subscribeDb.GetAll();
         }
 
         public Subscribe GetById(int id)
         {
-            return db.Subscribe.First(x => x.SubscribeId == id);
+            return subscribeDb.GetById(id);
         }
 
         public void Insert(Subscribe subscribe)
         {
-            db.Subscribe.Add(subscribe);
-            this.Save();
+            subscribeDb.Insert(subscribe);
         }
 
         public void Update(Subscribe subscribe)
         {
-            db.Entry(subscribe).State = EntityState.Modified;
-            this.Save();
+            subscribeDb.Update(subscribe);
         }
 
         public void Delete(int id)
         {
-            db.Subscribe.Remove(this.GetById(id));
-            this.Save();
+            subscribeDb.Delete(id);
         }
 
         public void Save()
         {
-            db.SaveChanges();
+            subscribeDb.Save();
         }
     }
 }

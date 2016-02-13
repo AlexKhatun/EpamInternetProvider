@@ -1,47 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BOL.Models;
 using DAL.Abstract;
+using DAL.Concrete;
+using Ninject;
 
-namespace DAL.Concrete
+namespace BLL.DbLogic
 {
-    public class EfRateRepository : EfAllRepository, IRateRepository
+    public class RateDb : BaseDb
     {
+        private readonly IRateRepository rateDb;
+
+        public RateDb()
+        {
+            rateDb = repository.AppKernel.Get<EfRateRepository>();
+        }
+
         public ICollection<Rate> GetAll()
         {
-            return db.Rate.ToList();
+            return rateDb.GetAll();
         }
 
         public Rate GetById(int id)
         {
-            return db.Rate.First(x => x.RateId == id);
+            return rateDb.GetById(id);
         }
 
         public void Insert(Rate rate)
         {
-            db.Rate.Add(rate);
-            this.Save();
+            rateDb.Insert(rate);
         }
 
         public void Update(Rate rate)
         {
-            db.Entry(rate).State = EntityState.Modified;
-            this.Save();
+            rateDb.Update(rate);
         }
 
         public void Delete(int id)
         {
-            db.Rate.Remove(this.GetById(id));
-            this.Save();
+            rateDb.Delete(id);
         }
 
         public void Save()
         {
-            db.SaveChanges();
+            rateDb.Save();
         }
     }
 }
