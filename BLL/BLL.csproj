@@ -41,7 +41,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,8 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authentication\InternetProviderMembership.cs" />
     <Compile Include="Binding\Repository.cs" />
     <Compile Include="DbLogic\AdressDb.cs" />
+    <Compile Include="DbLogic\AllDb.cs" />
     <Compile Include="DbLogic\BaseDb.cs" />
     <Compile Include="DbLogic\PurseDb.cs" />
     <Compile Include="DbLogic\RateDb.cs" />
