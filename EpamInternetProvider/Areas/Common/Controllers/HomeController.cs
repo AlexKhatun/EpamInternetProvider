@@ -1,21 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using BOL;
+﻿using System.Web.Mvc;
 using BOL.Models;
-using DAL;
 
-namespace EpamInternetProvider.Controllers
+namespace EpamInternetProvider.Areas.Base.Controllers
 {
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
-            InternetProviderContext db = new InternetProviderContext();
-            db.Role.Add(new Role() {Title = "blabla"});
-            db.SaveChanges();
             return View();
         }
 
