@@ -12,9 +12,13 @@ namespace BOL.Models
         public int SubscribeId { get; set; }
 
         [Required]
+        public int UserId { get; set; }
+
         public User User { get; set; }
 
         [Required]
+        public int RateId { get; set; }
+
         public Rate Rate { get; set; }
 
         [Required]

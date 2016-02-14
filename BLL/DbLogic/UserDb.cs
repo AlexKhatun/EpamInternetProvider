@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BLL.Security;
 using BOL.Models;
 using DAL.Abstract;
 using DAL.Concrete;
@@ -31,11 +32,13 @@ namespace BLL.DbLogic
 
         public void Insert(User user)
         {
+            user.Password = PasswordHasher.HashPassword(user.Password);
             userDb.Insert(user);
         }
 
         public void Update(User user)
         {
+            user.Password = PasswordHasher.HashPassword(user.Password);
             userDb.Update(user);
         }
 

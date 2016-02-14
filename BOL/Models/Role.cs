@@ -14,6 +14,6 @@ namespace BOL.Models
         [Required]
         public string Title { get; set; }
 
-        public virtual ICollection<User> Users { get; set; } 
+        public virtual List<User> Users { get; set; } 
     }
 }

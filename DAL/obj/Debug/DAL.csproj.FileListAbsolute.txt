@@ -55,3 +55,4 @@ C:\Users\Alex\Desktop\EpamInternetProvider\DAL\bin\Debug\ru\System.Web.WebPages.
 C:\Users\Alex\Desktop\EpamInternetProvider\DAL\bin\Debug\ru\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Alex\Desktop\EpamInternetProvider\DAL\obj\Debug\DAL.dll
 C:\Users\Alex\Desktop\EpamInternetProvider\DAL\obj\Debug\DAL.pdb
+C:\Users\Alex\Desktop\EpamInternetProvider\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache

@@ -12,6 +12,8 @@ namespace BOL.Models
         public int AdressId { get; set; }
 
         [Required]
+        public int UserId { get; set; }
+
         public User User { get; set; }
 
         [Required]

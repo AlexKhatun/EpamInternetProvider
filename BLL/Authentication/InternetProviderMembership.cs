@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Security;
 using BLL.DbLogic;
+using BLL.Security;
 
 namespace BLL.Authentication
 {
@@ -158,6 +159,7 @@ namespace BLL.Authentication
         {
             try
             {
+                password = PasswordHasher.HashPassword(password);
                 return db.UserDb.GetAll().Any(user => user.Email == username && user.Password == password);
             }
             catch (NullReferenceException)

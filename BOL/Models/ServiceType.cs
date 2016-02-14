@@ -14,6 +14,6 @@ namespace BOL.Models
         [Required]
         public string Title { get; set; }
 
-        public virtual ICollection<Service> Services { get; set; }
+        public virtual List<Service> Services { get; set; }
     }
 }

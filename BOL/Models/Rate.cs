@@ -12,6 +12,8 @@ namespace BOL.Models
         public int RateId { get; set; }
 
         [Required]
+        public int ServiceId { get; set; }
+
         public Service Service { get; set; }
 
         [Required]
@@ -25,6 +27,6 @@ namespace BOL.Models
         [DataType(DataType.Date)]
         public DateTime PriceFinishDate { get; set; }
 
-        public virtual ICollection<Subscribe> Subscribes { get; set; } 
+        public virtual List<Subscribe> Subscribes { get; set; } 
     }
 }

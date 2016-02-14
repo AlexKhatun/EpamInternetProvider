@@ -15,8 +15,10 @@ namespace BOL.Models
         public string Title { get; set; }
 
         [Required]
+        public int ServiceTypeId { get; set; }
+
         public ServiceType ServiceType { get; set; }
 
-        public virtual ICollection<Rate> Rates { get; set; } 
+        public virtual List<Rate> Rates { get; set; } 
     }
 }

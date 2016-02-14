@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace BOL.Models
 {
     public class User
     {
+        [Key]
         public int UserId { get; set; }
 
         [Required]
@@ -33,12 +35,15 @@ namespace BOL.Models
         [HiddenInput]
         public bool IsDeleted { get; set; }
 
-        [HiddenInput]
-        public Role Role { get; set; }
+        [Required]
+        public int RoleId { get; set; }
 
-        public virtual ICollection<Adress> Adresses { get; set; }
-        public virtual ICollection<Purse> Purses { get; set; }
-        public virtual ICollection<Subscribe> Subscribes { get; set; } 
+        [HiddenInput]
+        public virtual Role Role { get; set; }
+
+        public virtual List<Adress> Adresses { get; set; }
+        public virtual List<Purse> Purses { get; set; }
+        public virtual List<Subscribe> Subscribes { get; set; } 
 
     }
 }
