@@ -10,6 +10,13 @@ namespace BLL.Authentication
 {
     public class InternetProviderMembership : MembershipProvider
     {
+        private readonly AllDb db;
+
+        public InternetProviderMembership()
+        {
+            db = new AllDb();
+        }
+
         public override string ApplicationName
         {
             get
@@ -151,7 +158,6 @@ namespace BLL.Authentication
         {
             try
             {
-                AllDb db = new AllDb();
                 return db.UserDb.GetAll().Any(user => user.Email == username && user.Password == password);
             }
             catch (NullReferenceException)

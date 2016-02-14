@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication\InternetProviderMembership.cs" />
+    <Compile Include="Authentication\InternetProviderRole.cs" />
     <Compile Include="Binding\Repository.cs" />
     <Compile Include="DbLogic\AdressDb.cs" />
     <Compile Include="DbLogic\AllDb.cs" />
