@@ -159,9 +159,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Common\BaseAreaRegistration.cs" />
-    <Compile Include="Areas\User\UserAreaRegistration.cs" />
+    <Compile Include="Areas\Common\CommonAreaRegistration.cs" />
+    <Compile Include="Areas\Security\Controllers\SecurityController.cs" />
+    <Compile Include="Areas\Security\SecurityAreaRegistration.cs" />
+    <Compile Include="Areas\Users\Controllers\UserController.cs" />
+    <Compile Include="Areas\Users\UserAreaRegistration.cs" />
     <Compile Include="Areas\Common\Controllers\HomeController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\StartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -179,8 +183,12 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\User\Views\web.config" />
+    <Content Include="Areas\Users\Views\web.config" />
     <Content Include="Areas\Common\Views\web.config" />
+    <Content Include="Areas\Security\Views\web.config" />
+    <Content Include="Areas\Security\Views\Security\Login.cshtml" />
+    <Content Include="Areas\Security\Views\Security\Registration.cshtml" />
+    <Content Include="Areas\Users\Views\User\PersonalArea.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -193,7 +201,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -216,10 +226,12 @@
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Common\Models\" />
     <Folder Include="Areas\Common\Views\Shared\" />
-    <Folder Include="Areas\User\Controllers\" />
-    <Folder Include="Areas\User\Models\" />
-    <Folder Include="Areas\User\Views\Shared\" />
+    <Folder Include="Areas\Security\Models\" />
+    <Folder Include="Areas\Security\Views\Shared\" />
+    <Folder Include="Areas\Users\Models\" />
+    <Folder Include="Areas\Users\Views\Shared\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Base\" />
     <Folder Include="Views\Start\" />
   </ItemGroup>
   <ItemGroup>

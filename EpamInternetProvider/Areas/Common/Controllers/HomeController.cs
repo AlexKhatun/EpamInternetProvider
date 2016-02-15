@@ -1,7 +1,6 @@
 ﻿using System.Web.Mvc;
-using BOL.Models;
 
-namespace EpamInternetProvider.Areas.Base.Controllers
+namespace EpamInternetProvider.Areas.Common.Controllers
 {
     public class HomeController : Controller
     {

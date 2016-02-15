@@ -35,6 +35,9 @@ namespace BOL.Models
         [HiddenInput]
         public bool IsDeleted { get; set; }
 
+        [HiddenInput]
+        public bool IsRegister { get; set; }
+
         [Required]
         public int RoleId { get; set; }
 

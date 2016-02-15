@@ -8,14 +8,13 @@ using BOL.Models;
 
 namespace EpamInternetProvider.Controllers
 {
-    public class StartController : Controller
+    public class StartController : BaseController
     {
         // GET: Start
         public ActionResult Index()
         {
-            AllDb db = new AllDb();
-            var r = db.RoleDb.GetById(1);
-            db.UserDb.Insert(new User { FirstName = "fdsa", LastName = "dasda", Password = "MyPass", IsDeleted = false, Email = "Khatunec@gmail.com", RegisterDate = DateTime.Now, RoleId = r.RoleId});
+            //var r = db.RoleDb.GetById(1);
+            //db.UserDb.Insert(new User { FirstName = "Alex", LastName = "Khatuntsev", Password = "Aleksey96", IsDeleted = false, Email = "Khatunec@gmail.com",IsRegister = false,RegisterDate = DateTime.Now, RoleId = r.RoleId});
             return RedirectToAction("Index", "Home", new {area = "Common"});
         }
     }

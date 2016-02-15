@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace EpamInternetProvider.Areas.Base
+namespace EpamInternetProvider.Areas.Users
 {
-    public class BaseAreaRegistration : AreaRegistration 
+    public class UsersAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {
             get 
             {
-                return "Common";
+                return "Users";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "Common_default",
-                "Common/{controller}/{action}/{id}",
+                "Users_default",
+                "Users/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

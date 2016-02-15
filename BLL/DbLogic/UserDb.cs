@@ -32,6 +32,10 @@ namespace BLL.DbLogic
 
         public void Insert(User user)
         {
+            user.RegisterDate = DateTime.Now;
+            user.IsDeleted = false;
+            user.IsRegister = false;
+            user.RoleId = 1;
             user.Password = PasswordHasher.HashPassword(user.Password);
             userDb.Insert(user);
         }
