@@ -30,14 +30,23 @@ namespace BLL.DbLogic
             return userDb.GetById(id);
         }
 
-        public void Insert(User user)
+        public string Insert(User user)
         {
-            user.RegisterDate = DateTime.Now;
-            user.IsDeleted = false;
-            user.IsRegister = false;
-            user.RoleId = 1;
-            user.Password = PasswordHasher.HashPassword(user.Password);
-            userDb.Insert(user);
+            try
+            {
+                userDb.GetAll().First(x => x.Email == user.Email);
+                return "Такой пользователь уже существует";
+            }
+            catch (InvalidOperationException)
+            {
+                user.RegisterDate = DateTime.Now;
+                user.IsDeleted = false;
+                user.IsRegister = false;
+                user.RoleId = 1;
+                user.Password = PasswordHasher.HashPassword(user.Password);
+                userDb.Insert(user);
+                return "Регистрация успешна!";
+            }      
         }
 
         public void Update(User user)

@@ -20,19 +20,25 @@
                 </button>
                 @if (User.Identity.IsAuthenticated)
                 {
-                    @Html.ActionLink(User.Identity.Name, "OpenPersonalArea", "User", new {area = "Users"}, new {@class = "navbar-brand"});
+                    @Html.ActionLink(User.Identity.Name, "EditProfile", "User", new {area = "Users"}, new {@class = "navbar-brand"});
                 }
                 else
                 {
-                    @Html.ActionLink("Имя приложения", "Index", "Home", new {area = "Common"}, new {@class = "navbar-brand"});
+                    @Html.ActionLink("Интернет провайдер \"Наеб клиентов\"", "Index", "Home", new {area = "Common"}, new {@class = "navbar-brand"});
                 }
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                    <li>@Html.ActionLink("О программе", "About", "Home")</li>
-                    <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
-                    <li>@Html.ActionLink(User.Identity.Name, "OpenPersonalArea", "User", new {area = "Users"}, new{});</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @Html.ActionLink("Интернет провайдер \"Наеб клиентов\", главная страница", "Index", "Home", new { area = "Common" }, new { @class = "navbar-brand" });
+                        @Html.ActionLink("Выход из системы", "LogOut", "Security", new { area = "Security" }, new { @class = "navbar-brand" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Логин", "Login", "Security", new { area = "Security" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Регистрация", "Registration", "Security", new {area = "Security"}, new {@class = "navbar-brand"})
+                    }
                 </ul>
             </div>
         </div>

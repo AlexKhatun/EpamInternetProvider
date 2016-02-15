@@ -39,14 +39,20 @@ namespace EpamInternetProvider.Areas.Security.Controllers
         {
             try
             {
-                db.UserDb.Insert(user);
+                ViewBag.Msg = db.UserDb.Insert(user);
             }
             catch (Exception)
             {
-                return RedirectToAction("Index", "Home", new { area = "Common" });
+                return RedirectToAction("Index", "Home", new { area = "Common", message = ViewBag.Msg });
             }
             FormsAuthentication.SetAuthCookie(user.Email, true);
-            return RedirectToAction("Index", "Home", new { area = "Common" });
+            return RedirectToAction("Index", "Home", new { area = "Common", message = ViewBag.Msg});
+        }
+
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home", new {area = "Common", message = "Вы вышли из системы"});
         }
     }
 }
