@@ -159,6 +159,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Common\CommonAreaRegistration.cs" />
     <Compile Include="Areas\Security\Controllers\SecurityController.cs" />
     <Compile Include="Areas\Security\SecurityAreaRegistration.cs" />
@@ -190,6 +191,9 @@
     <Content Include="Areas\Security\Views\Security\Registration.cshtml" />
     <Content Include="Areas\Users\Views\User\PersonalArea.cshtml" />
     <Content Include="Areas\Users\Views\User\AddPurse.cshtml" />
+    <Content Include="Areas\Users\Views\User\AddAdress.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Adminka.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\ListUnregUsers.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -222,7 +226,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Common\Models\" />

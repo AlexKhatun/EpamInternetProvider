@@ -33,6 +33,10 @@
                     {
                         @Html.ActionLink("Интернет провайдер \"Наеб клиентов\", главная страница", "Index", "Home", new { area = "Common" }, new { @class = "navbar-brand" });
                         @Html.ActionLink("Выход из системы", "LogOut", "Security", new { area = "Security" }, new { @class = "navbar-brand" })
+                        if (User.IsInRole("Admin"))
+                        {
+                            @Html.ActionLink("Админка", "Adminka", "Admin", new {area = "Admin"}, new {@class = "navbar-brand"})
+                        }
                     }
                     else
                     {
@@ -47,7 +51,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year – Интернет провайдер "Наеб клиентов"</p>
         </footer>
     </div>
 

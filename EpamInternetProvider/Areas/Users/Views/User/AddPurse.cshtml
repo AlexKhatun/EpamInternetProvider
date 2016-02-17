@@ -7,7 +7,7 @@
 
 <h2>Добавить кошелек</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("AddPurse", "User", FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
     

@@ -42,8 +42,9 @@ namespace BLL.DbLogic
                 user.RegisterDate = DateTime.Now;
                 user.IsDeleted = false;
                 user.IsRegister = false;
-                user.RoleId = 1;
+                user.RoleId = 2;
                 user.Password = PasswordHasher.HashPassword(user.Password);
+                user.Email = user.Email.ToLower();
                 userDb.Insert(user);
                 return "Регистрация успешна!";
             }      
