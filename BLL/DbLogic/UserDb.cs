@@ -32,6 +32,7 @@ namespace BLL.DbLogic
 
         public string Insert(User user)
         {
+            user.Email = user.Email.ToLower();
             try
             {
                 userDb.GetAll().First(x => x.Email == user.Email);
@@ -44,7 +45,6 @@ namespace BLL.DbLogic
                 user.IsRegister = false;
                 user.RoleId = 2;
                 user.Password = PasswordHasher.HashPassword(user.Password);
-                user.Email = user.Email.ToLower();
                 userDb.Insert(user);
                 return "Регистрация успешна!";
             }      

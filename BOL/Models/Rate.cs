@@ -16,6 +16,10 @@ namespace BOL.Models
         [DisplayName("Id услуги")]
         public int ServiceId { get; set; }
 
+        [Required]
+        [DisplayName("Название тарифа")]
+        public string Title { get; set; }
+
         [DisplayName("Услуга")]
         public Service Service { get; set; }
 
