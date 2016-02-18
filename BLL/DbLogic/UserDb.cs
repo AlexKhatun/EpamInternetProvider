@@ -30,13 +30,12 @@ namespace BLL.DbLogic
             return userDb.GetById(id);
         }
 
-        public string Insert(User user)
+        public bool Insert(User user)
         {
-            user.Email = user.Email.ToLower();
             try
             {
                 userDb.GetAll().First(x => x.Email == user.Email);
-                return "Такой пользователь уже существует";
+                return false;
             }
             catch (InvalidOperationException)
             {
@@ -46,19 +45,29 @@ namespace BLL.DbLogic
                 user.RoleId = 2;
                 user.Password = PasswordHasher.HashPassword(user.Password);
                 userDb.Insert(user);
-                return "Регистрация успешна!";
+                return true;
             }      
         }
 
-        public void Update(User user)
+        public bool Update(User user)
         {
-            user.Password = PasswordHasher.HashPassword(user.Password);
-            userDb.Update(user);
+            try
+            {
+                user.Password = PasswordHasher.HashPassword(user.Password);
+                userDb.Update(user);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public void Delete(int id)
         {
-            userDb.Delete(id);
+            var user = userDb.GetById(id);
+            user.IsDeleted = true;
+            this.Update(user);
         }
 
         public void Save()

@@ -29,14 +29,30 @@ namespace BLL.DbLogic
             return serviceDb.GetById(id);
         }
 
-        public void Insert(Service service)
+        public bool Insert(Service service)
         {
-            serviceDb.Insert(service);
+            try
+            {
+                serviceDb.Insert(service);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
-        public void Update(Service service)
+        public bool Update(Service service)
         {
-            serviceDb.Update(service);
+            try
+            {
+                serviceDb.Update(service);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public void Delete(int id)

@@ -29,14 +29,30 @@ namespace BLL.DbLogic
             return rateDb.GetById(id);
         }
 
-        public void Insert(Rate rate)
+        public bool Insert(Rate rate)
         {
-            rateDb.Insert(rate);
+            //try
+            //{
+                rateDb.Insert(rate);
+                return true;
+            //}
+            //catch (Exception)
+            //{
+            //    return false;
+            //}
         }
 
-        public void Update(Rate rate)
+        public bool Update(Rate rate)
         {
-            rateDb.Update(rate);
+            try
+            {
+                rateDb.Update(rate);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public void Delete(int id)

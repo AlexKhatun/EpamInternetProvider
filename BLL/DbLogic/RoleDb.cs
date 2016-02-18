@@ -30,14 +30,30 @@ namespace BLL.DbLogic
             return roleDb.GetById(id);
         }
 
-        public void Insert(Role role)
+        public bool Insert(Role role)
         {
-            roleDb.Insert(role);
+            try
+            {
+                roleDb.Insert(role);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
-        public void Update(Role role)
+        public bool Update(Role role)
         {
-            roleDb.Update(role);
+            try
+            {
+                roleDb.Update(role);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public void Delete(int id)

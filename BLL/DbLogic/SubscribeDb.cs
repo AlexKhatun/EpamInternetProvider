@@ -29,14 +29,30 @@ namespace BLL.DbLogic
             return subscribeDb.GetById(id);
         }
 
-        public void Insert(Subscribe subscribe)
+        public bool Insert(Subscribe subscribe)
         {
-            subscribeDb.Insert(subscribe);
+            try
+            {
+                subscribeDb.Insert(subscribe);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
-        public void Update(Subscribe subscribe)
+        public bool Update(Subscribe subscribe)
         {
-            subscribeDb.Update(subscribe);
+            try
+            {
+                subscribeDb.Update(subscribe);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public void Delete(int id)

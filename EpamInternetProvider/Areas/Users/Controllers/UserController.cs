@@ -40,7 +40,7 @@ namespace EpamInternetProvider.Areas.Users.Controllers
         {
             adress.UserId = db.UserDb.GetAll().First(x => x.Email == User.Identity.Name).UserId;
             db.AdressDb.Insert(adress);
-            return RedirectToAction("EditProfile", new { message = "Адрес записан" });
+            return RedirectToAction("EditProfile", new {message = "Адрес записан"});
         }
     }
 }

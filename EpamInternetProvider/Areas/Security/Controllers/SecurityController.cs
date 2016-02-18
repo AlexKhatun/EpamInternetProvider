@@ -22,6 +22,7 @@ namespace EpamInternetProvider.Areas.Security.Controllers
         [HttpPost]
         public ActionResult Login(User user)
         {
+            user.Email = user.Email.ToLower();
             if (Membership.ValidateUser(user.Email, user.Password))
             {
                 FormsAuthentication.SetAuthCookie(user.Email, true);
@@ -39,6 +40,7 @@ namespace EpamInternetProvider.Areas.Security.Controllers
         {
             try
             {
+                user.Email = user.Email.ToLower();
                 ViewBag.Msg = db.UserDb.Insert(user);
             }
             catch (Exception)

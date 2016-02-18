@@ -29,14 +29,30 @@ namespace BLL.DbLogic
             return adressDb.GetById(id);
         }
 
-        public void Insert(Adress adress)
+        public bool Insert(Adress adress)
         {
-            adressDb.Insert(adress);
+            try
+            {
+                adressDb.Insert(adress);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
-        public void Update(Adress adress)
+        public bool Update(Adress adress)
         {
-            adressDb.Update(adress);
+            try
+            {
+                adressDb.Update(adress);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public void Delete(int id)

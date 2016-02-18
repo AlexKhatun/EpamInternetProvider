@@ -194,6 +194,8 @@
     <Content Include="Areas\Users\Views\User\AddAdress.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Adminka.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\ListUnregUsers.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AddService.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AddRate.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

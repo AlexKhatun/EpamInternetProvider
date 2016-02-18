@@ -29,14 +29,30 @@ namespace BLL.DbLogic
             return purseDb.GetById(id);
         }
 
-        public void Insert(Purse purse)
+        public bool Insert(Purse purse)
         {
-            purseDb.Insert(purse);
+            try
+            {
+                purseDb.Insert(purse);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
-        public void Update(Purse purse)
+        public bool Update(Purse purse)
         {
-            purseDb.Update(purse);
+            try
+            {
+                purseDb.Update(purse);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public void Delete(int id)
