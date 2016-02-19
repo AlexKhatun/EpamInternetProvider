@@ -56,9 +56,17 @@ namespace BLL.DbLogic
             }
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
-            roleDb.Delete(id);
+            try
+            {
+                roleDb.Delete(id);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public void Save()

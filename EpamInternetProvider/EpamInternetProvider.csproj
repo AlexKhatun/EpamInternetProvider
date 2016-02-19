@@ -196,6 +196,12 @@
     <Content Include="Areas\Admin\Views\Admin\ListUnregUsers.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\AddService.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\AddRate.cshtml" />
+    <Content Include="Areas\Common\Views\Home\SeeServicesList.cshtml" />
+    <Content Include="Areas\Common\Views\Home\SeeServiceDetails.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\EditService.cshtml" />
+    <Content Include="Areas\Common\Views\Home\SeeRateList.cshtml" />
+    <Content Include="Areas\Common\Views\Home\SeeRateDetails.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\EditRate.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<BOL.Models.Rate>
+
+@{
+    ViewBag.Title = "SeeRateList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SeeRateList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Service.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriceStartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriceFinishDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Service.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriceStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriceFinishDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RateId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RateId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RateId })
+        </td>
+    </tr>
+}
+
+</table>

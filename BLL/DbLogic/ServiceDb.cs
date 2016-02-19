@@ -55,9 +55,17 @@ namespace BLL.DbLogic
             }
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
-            serviceDb.Delete(id);
+            try
+            {
+                serviceDb.Delete(id);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public void Save()

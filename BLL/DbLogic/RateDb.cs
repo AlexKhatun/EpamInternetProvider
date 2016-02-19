@@ -31,15 +31,15 @@ namespace BLL.DbLogic
 
         public bool Insert(Rate rate)
         {
-            //try
-            //{
+            try
+            {
                 rateDb.Insert(rate);
                 return true;
-            //}
-            //catch (Exception)
-            //{
-            //    return false;
-            //}
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public bool Update(Rate rate)
@@ -55,9 +55,17 @@ namespace BLL.DbLogic
             }
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
-            rateDb.Delete(id);
+            try
+            {
+                rateDb.Delete(id);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public void Save()

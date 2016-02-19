@@ -1,13 +1,13 @@
 ﻿@model BOL.Models.Service
 
 @{
-    ViewBag.Title = "AddService";
+    ViewBag.Title = "EditService";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Добавить услугу</h2>
+<h2>Редактировать услугу</h2>
 
-@using (Html.BeginForm("AddService", "Admin", FormMethod.Post)) 
+@using (Html.BeginForm("EditService", "Admin", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     
@@ -15,6 +15,8 @@
         <h4>@ViewBag.Msg</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ServiceId)
+
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -24,23 +26,21 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ServiceType.Title, htmlAttributes: new {@class = "control-label col-md-2"})
+            @Html.LabelFor(model => model.ServiceTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.ServiceTypeId, ViewBag.ServiceTypes as SelectList, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ServiceType.Title, "", new {@class = "text-danger"})
+                @Html.ValidationMessageFor(model => model.ServiceTypeId, "", new { @class = "text-danger" })
             </div>
         </div>
-        
-
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Список услуг", "SeeServicesList", new {area = "Common", controller = "Home"})
 </div>

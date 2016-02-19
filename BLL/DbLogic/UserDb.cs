@@ -63,11 +63,19 @@ namespace BLL.DbLogic
             }
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             var user = userDb.GetById(id);
-            user.IsDeleted = true;
-            this.Update(user);
+            try
+            {
+                user.IsDeleted = true;
+                this.Update(user);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public void Save()

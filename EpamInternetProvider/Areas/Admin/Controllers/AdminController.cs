@@ -31,9 +31,10 @@ namespace EpamInternetProvider.Areas.Admin.Controllers
             return RedirectToAction("SeeListUnregUsers");
         }
 
-        public ActionResult AddService()
+        public ActionResult AddService(string message = "")
         {
             SelectList serviceTypes = new SelectList(db.ServiceTypeDb.GetAll(), "ServiceTypeId", "Title");
+            ViewBag.Msg = message;
             ViewBag.ServiceTypes = serviceTypes;
             return View();
         }
@@ -52,9 +53,47 @@ namespace EpamInternetProvider.Areas.Admin.Controllers
             }
         }
 
-        public ActionResult AddRate()
+        public ActionResult EditService(int id)
+        {
+            var service = db.ServiceDb.GetById(id);
+            SelectList serviceTypes = new SelectList(db.ServiceTypeDb.GetAll(), "ServiceTypeId", "Title");
+            ViewBag.ServiceTypes = serviceTypes;
+            return View(service);
+        }
+
+        [HttpPost]
+        public ActionResult EditService(Service service)
+        {
+            var result = db.ServiceDb.Update(service);
+            if (result)
+            {
+
+                return RedirectToAction("Adminka", new {message = "Сохранения изменены"});
+            }
+            else
+            {
+                return RedirectToAction("Adminka", new {message = "Оишбка"});
+            }
+        }
+
+        public ActionResult DeleteService(int id)
+        {
+            var result = db.ServiceDb.Delete(id);
+            if(result)
+            {
+
+                return RedirectToAction("Adminka", new { message = "Услуга удалена" });
+            }
+            else
+            {
+                return RedirectToAction("Adminka", new { message = "Оишбка" });
+            }
+        }
+
+        public ActionResult AddRate(string message = "")
         {
             SelectList services = new SelectList(db.ServiceDb.GetAll(), "ServiceId", "Title");
+            ViewBag.Msg = message;
             ViewBag.Services = services;
             return View();
         }
@@ -71,6 +110,12 @@ namespace EpamInternetProvider.Areas.Admin.Controllers
             {
                 return RedirectToAction("Adminka", new { message = "Оишбка" });
             }
+        }
+
+        public ActionResult EditRate(int id)
+        {
+            var rate = db.RateDb.GetById(id);
+            return View(id);
         }
     }
 }

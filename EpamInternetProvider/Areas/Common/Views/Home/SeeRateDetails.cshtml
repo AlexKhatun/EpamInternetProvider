@@ -1,0 +1,59 @@
+﻿@model BOL.Models.Rate
+
+@{
+    ViewBag.Title = "SeeRateDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SeeRateDetails</h2>
+
+<div>
+    <h4>Rate</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceFinishDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceFinishDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RateId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

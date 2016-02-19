@@ -1,0 +1,37 @@
+﻿@model BOL.Models.Service
+
+@{
+    ViewBag.Title = "SeeServiceDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Список услуг</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceType.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceType.Title)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Редактировать", "EditService", new {area = "Admin", controller = "Admin", id = Model.ServiceId}) <span>|</span>
+    }
+    @Html.ActionLink("Список услуг", "SeeServicesList")
+</p>
