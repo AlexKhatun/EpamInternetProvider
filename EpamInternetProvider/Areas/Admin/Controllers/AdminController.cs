@@ -115,7 +115,38 @@ namespace EpamInternetProvider.Areas.Admin.Controllers
         public ActionResult EditRate(int id)
         {
             var rate = db.RateDb.GetById(id);
-            return View(id);
+            SelectList services = new SelectList(db.ServiceDb.GetAll(), "ServiceId", "Title");
+            ViewBag.Services = services;
+            return View(rate);
+        }
+
+        [HttpPost]
+        public ActionResult EditRate(Rate rate)
+        {
+            var result = db.RateDb.Update(rate);
+            if (result)
+            {
+
+                return RedirectToAction("Adminka", new { message = "Сохранения изменены" });
+            }
+            else
+            {
+                return RedirectToAction("Adminka", new { message = "Оишбка" });
+            }
+        }
+
+        public ActionResult DeleteRate(int id)
+        {
+            var result = db.RateDb.Delete(id);
+            if (result)
+            {
+
+                return RedirectToAction("Adminka", new { message = "Тариф удален" });
+            }
+            else
+            {
+                return RedirectToAction("Adminka", new { message = "Оишбка" });
+            }
         }
     }
 }

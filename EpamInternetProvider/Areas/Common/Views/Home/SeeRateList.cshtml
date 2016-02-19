@@ -5,10 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>SeeRateList</h2>
+<h2>Список тарифов</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Create New", "AddRate", new {area = "Admin", controller = "Admin"})
+    }
 </p>
 <table class="table">
     <tr>
@@ -48,9 +51,19 @@
             @Html.DisplayFor(modelItem => item.PriceFinishDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RateId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RateId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RateId })
+            @if (User.IsInRole("Admin"))
+            {
+
+                @Html.ActionLink("Редактировать", "EditRate", new { area = "Admin", controller = "Admin", id = item.RateId })
+                <span>|</span>
+            }
+
+            @Html.ActionLink("Детали", "SeeRateDetails", new { id = item.RateId })
+            @if (User.IsInRole("Admin"))
+            {
+                <span>|</span>
+                @Html.ActionLink("Удалить", "DeleteRate", new { area = "Admin", controller = "Admin", id = item.RateId })
+            }
         </td>
     </tr>
 }

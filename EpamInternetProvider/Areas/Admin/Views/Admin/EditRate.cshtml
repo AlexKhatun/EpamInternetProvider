@@ -7,7 +7,7 @@
 
 <h2>EditRate</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("EditRate", "Admin", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     
@@ -18,10 +18,10 @@
         @Html.HiddenFor(model => model.RateId)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ServiceId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Service.Title, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ServiceId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ServiceId, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.ServiceId, ViewBag.Services as SelectList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Service.Title, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -66,5 +66,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Список тарифов", "SeeRateList", new {area = "Common",controller = "Home"})
 </div>
