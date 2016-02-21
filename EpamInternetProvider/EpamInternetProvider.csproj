@@ -202,6 +202,9 @@
     <Content Include="Areas\Common\Views\Home\SeeRateList.cshtml" />
     <Content Include="Areas\Common\Views\Home\SeeRateDetails.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\EditRate.cshtml" />
+    <Content Include="Areas\Users\Views\User\EditPurse.cshtml" />
+    <Content Include="Areas\Users\Views\User\EditAdress.cshtml" />
+    <Content Include="Areas\Users\Views\User\AddFunse.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

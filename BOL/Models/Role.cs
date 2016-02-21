@@ -13,7 +13,7 @@ namespace BOL.Models
         public int RoleId { get; set; }
 
         [Required]
-        [DisplayName("Название")]
+        [DisplayName("Название роли")]
         public string Title { get; set; }
 
         [DisplayName("Список пользователей")]

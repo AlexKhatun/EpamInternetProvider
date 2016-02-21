@@ -13,7 +13,7 @@ namespace BOL.Models
         public int ServiceTypeId { get; set; }
 
         [Required]
-        [DisplayName("Название")]
+        [DisplayName("Название типа услуг")]
         public string Title { get; set; }
 
         [DisplayName("Списк услуг")]

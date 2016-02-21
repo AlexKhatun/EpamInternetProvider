@@ -23,5 +23,9 @@ namespace BOL.Models
         [Required]
         [DisplayName("Название кошелька")]
         public string Title { get; set; }
+
+        [Required]
+        [DisplayName("Сумма на счету")]
+        public decimal Money { get; set; }
     }
 }
