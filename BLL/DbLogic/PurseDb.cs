@@ -46,6 +46,7 @@ namespace BLL.DbLogic
         {
             try
             {
+                purse.User.RoleId = purse.Money > 0 ? 2 : 3;
                 purseDb.Update(purse);
                 return true;
             }

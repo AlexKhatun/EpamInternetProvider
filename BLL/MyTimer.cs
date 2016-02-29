@@ -27,7 +27,8 @@ namespace BLL
                 foreach (var user in db.UserDb.GetAll())
                 {
                     // Тут должна быть транзакция
-                    foreach (var sub in db.SubscribeDb.GetAll().Where(x => x.UserId == user.UserId))
+                    var myUser = user;
+                    foreach (var sub in db.SubscribeDb.GetAll().Where(x => x.UserId == myUser.UserId))
                     {
                         user.Purses.First().Money -= sub.Rate.Price;
                     }

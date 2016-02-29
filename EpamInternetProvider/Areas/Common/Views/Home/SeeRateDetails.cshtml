@@ -53,9 +53,14 @@
     </dl>
 </div>
 <p>
+    @if (User.IsInRole("User"))
+    {
+        Html.ActionLink("Добавить подписку", "AddSubscribe", new {area = "Users", controller = "Subscribe"});
+    }
     @if (User.IsInRole("Admin"))
     {
-        @Html.ActionLink("Редактировать", "EditRate", new { area = "Admin", controller = "Admin", id = Model.ServiceId }) <span>|</span>
+        @Html.ActionLink("Редактировать", "EditRate", new {area = "Admin", controller = "Admin", id = Model.ServiceId})
+        <span>|</span>
     }
     @Html.ActionLink("Список тарифов", "SeeRateList")
 </p>

@@ -10,44 +10,47 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.ActionLink("Имя", "SeeListUnregUsers", new { sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "FirstName", page = ViewBag.Page ?? "1" })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.ActionLink("Фамилия", "SeeListUnregUsers", new { sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "LastName", page = ViewBag.Page ?? "1" })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.ActionLink("Email", "SeeListUnregUsers", new { sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "Email", page = ViewBag.Page ?? "1" })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RegisterDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Role.Title)
+            @Html.ActionLink("Дата регистрации", "SeeListUnregUsers", new { sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "RegisterDate", page = ViewBag.Page ?? "1" })
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RegisterDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Role.Title)
-        </td>
-        <td>
-            @Html.ActionLink("Зарегистрировать пользователя", "RegisterUser", new { id = item.UserId }) |
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegisterDate)
+            </td>
+            <td>
+                @Html.ActionLink("Зарегистрировать пользователя", "RegisterUser", new {id = item.UserId})
+            </td>
+        </tr>
+    }
 
 </table>
+
+@{
+    double pages = ViewBag.Pages;
+}
+@for (int i = 0; i < pages; i++)
+{
+    @Html.ActionLink((i+1).ToString() +  " ", "SeeListUnregUsers", new { sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "FirstName", page = i })
+}

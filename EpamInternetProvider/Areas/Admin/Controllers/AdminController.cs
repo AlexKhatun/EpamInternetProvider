@@ -18,10 +18,74 @@ namespace EpamInternetProvider.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult SeeListUnregUsers(string message = "")
+        public ActionResult SeeListUnregUsers(string sortOrder, string sortBy, string page, string message = "")
         {
             ViewBag.Msg = message;
-            return View("ListUnregUsers", db.UserDb.GetAll().Where(x => x.IsRegister == false));
+            ViewBag.SortBy = sortBy;
+            ViewBag.SortOrder = sortOrder;
+            var users = db.UserDb.GetAll().Where(x => x.IsRegister == false);
+            switch (sortBy)
+            {
+                case "FirstName" :
+                    switch (sortOrder)
+                    {
+                        case "Asc":
+                            users = users.OrderBy(x => x.FirstName).ToList();
+                            break;
+                        case "Desc":
+                            users = users.OrderByDescending(x => x.FirstName).ToList();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case "LastName":
+                    switch (sortOrder)
+                    {
+                        case "Asc":
+                            users = users.OrderBy(x => x.LastName).ToList();
+                            break;
+                        case "Desc":
+                            users = users.OrderByDescending(x => x.LastName).ToList();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case "Email" :
+                    switch (sortOrder)
+                        {
+                            case "Asc":
+                                users = users.OrderBy(x => x.Email).ToList();
+                                break;
+                            case "Desc":
+                                users = users.OrderByDescending(x => x.Email).ToList();
+                                break;
+                            default:
+                                break;
+                        }
+                    break;
+                case "RegisterDate":
+                    switch (sortOrder)
+                    {
+                        case "Asc":
+                            users = users.OrderBy(x => x.RegisterDate).ToList();
+                            break;
+                        case "Desc":
+                            users = users.OrderByDescending(x => x.RegisterDate).ToList();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            ViewBag.Pages = Math.Ceiling((double)(db.UserDb.GetAll().Count(x => x.IsRegister == false) / 2));
+            int myPage = int.Parse(page ?? "1");
+            ViewBag.Page = page;
+            users = users.Skip((myPage - 1)*2).Take(2);
+            return View("ListUnregUsers", users);
         }
 
         public ActionResult RegisterUser(int id)

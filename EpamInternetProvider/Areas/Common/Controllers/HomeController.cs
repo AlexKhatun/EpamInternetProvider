@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Linq;
+using System.Web.Mvc;
 using System.Web.Services.Description;
 using EpamInternetProvider.Controllers;
 
@@ -26,10 +28,47 @@ namespace EpamInternetProvider.Areas.Common.Controllers
             return View();
         }
 
-        public ActionResult SeeServicesList(string message = "")
+        public ActionResult SeeServicesList(string sortOrder, string sortBy, string page, string message = "")
         {
-            ViewBag.Msg = message;
             var services = db.ServiceDb.GetAll();
+            ViewBag.Msg = message;
+            ViewBag.SortBy = sortBy;
+            ViewBag.SortOrder = sortOrder;
+            switch (sortBy)
+            {
+                case "Title":
+                    switch (sortOrder)
+                    {
+                        case "Asc":
+                            services = services.OrderBy(x => x.Title).ToList();
+                            break;
+                        case "Desc":
+                            services = services.OrderByDescending(x => x.Title).ToList();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case "ServiceTypeTitle":
+                    switch (sortOrder)
+                    {
+                        case "Asc":
+                            services = services.OrderBy(x => x.ServiceType.Title).ToList();
+                            break;
+                        case "Desc":
+                            services = services.OrderByDescending(x => x.ServiceType.Title).ToList();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            ViewBag.Pages = Math.Ceiling((double)(db.RateDb.GetAll().Count() / 2));
+            int myPage = int.Parse(page ?? "1");
+            ViewBag.Page = page;
+            services = services.Skip((myPage - 1) * 2).Take(2).ToList();
             return View(services);
         }
 
@@ -40,10 +79,60 @@ namespace EpamInternetProvider.Areas.Common.Controllers
             return View(service);
         }
 
-        public ActionResult SeeRateList(string message = "")
+        public ActionResult SeeRateList(string sortOrder, string sortBy, string page, string message = "")
         {
-            ViewBag.Msg = message;
             var rates = db.RateDb.GetAll();
+            ViewBag.Msg = message;
+            ViewBag.SortBy = sortBy;
+            ViewBag.SortOrder = sortOrder;
+            switch (sortBy)
+            {
+                case "ServiceTitle":
+                    switch (sortOrder)
+                    {
+                        case "Asc":
+                            rates = rates.OrderBy(x => x.Service.Title).ToList();
+                            break;
+                        case "Desc":
+                            rates = rates.OrderByDescending(x => x.Service.Title).ToList();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case "Title":
+                    switch (sortOrder)
+                    {
+                        case "Asc":
+                            rates = rates.OrderBy(x => x.Title).ToList();
+                            break;
+                        case "Desc":
+                            rates = rates.OrderByDescending(x => x.Title).ToList();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case "Price":
+                    switch (sortOrder)
+                    {
+                        case "Asc":
+                            rates = rates.OrderBy(x => x.Price).ToList();
+                            break;
+                        case "Desc":
+                            rates = rates.OrderByDescending(x => x.Title).ToList();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            ViewBag.Pages = Math.Ceiling((double)(db.RateDb.GetAll().Count() / 2));
+            int myPage = int.Parse(page ?? "1");
+            ViewBag.Page = page;
+            rates = rates.Skip((myPage - 1) * 2).Take(2).ToList();
             return View(rates);
         }
 

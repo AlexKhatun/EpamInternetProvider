@@ -16,56 +16,55 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Service.Title)
+            @Html.ActionLink("Название услуги", "SeeRateList", new {sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "ServiceTitle", page = ViewBag.Page ?? "1"})
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.ActionLink("Название тарифа", "SeeRateList", new {sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "Title", page = ViewBag.Page ?? "1"})
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PriceStartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PriceFinishDate)
+            @Html.ActionLink("Цена", "SeeRateList", new {sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "Price", page = ViewBag.Page ?? "1"})
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Service.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PriceStartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PriceFinishDate)
-        </td>
-        <td>
-            @if (User.IsInRole("Admin"))
-            {
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @if (User.IsInRole("Admin"))
+                {
 
-                @Html.ActionLink("Редактировать", "EditRate", new { area = "Admin", controller = "Admin", id = item.RateId })
-                <span>|</span>
-            }
+                    @Html.ActionLink("Редактировать", "EditRate", new {area = "Admin", controller = "Admin", id = item.RateId})
+                    <span>|</span>
+                }
 
-            @Html.ActionLink("Детали", "SeeRateDetails", new { id = item.RateId })
-            @if (User.IsInRole("Admin"))
-            {
-                <span>|</span>
-                @Html.ActionLink("Удалить", "DeleteRate", new { area = "Admin", controller = "Admin", id = item.RateId })
-            }
-        </td>
-    </tr>
-}
+                @Html.ActionLink("Детали", "SeeRateDetails", new {id = item.RateId})
+                @if (User.IsInRole("Admin"))
+                {
+                    <span>|</span>
+                    @Html.ActionLink("Удалить", "DeleteRate", new {area = "Admin", controller = "Admin", id = item.RateId})
+                }
+            </td>
+        </tr>
+    }
 
 </table>
+
+@{
+    double pages = ViewBag.Pages;
+}
+@for (int i = 0; i < pages; i++)
+{
+    @Html.ActionLink((i + 1).ToString() + " ", "SeeRateList", new { sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "FirstName", page = i })
+}
+
+
