@@ -1,0 +1,45 @@
+﻿@model IEnumerable<BOL.Models.Subscribe>
+
+@{
+    ViewBag.Title = "SeeSubscribeList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>@ViewBag.Msg</h1>
+<h2>SeeSubscribeList</h2>
+
+<p>
+    @Html.ActionLink("Добавить подписку", "AddSubscribe")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Rate.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rate.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubscribeDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rate.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rate.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubscribeDate)
+        </td>
+        <td>
+            @Html.ActionLink("Детали", "SeeSubscribeDetails", new { id=item.SubscribeId }) |
+            @Html.ActionLink("Отписаться", "DeleteSubscribe", new { id=item.SubscribeId })
+        </td>
+    </tr>
+}
+
+</table>

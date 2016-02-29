@@ -14,8 +14,9 @@ namespace EpamInternetProvider.Areas.Security.Controllers
     public class SecurityController : BaseController
     {
         // GET: Security/Security
-        public ActionResult Login()
+        public ActionResult Login(string message = "")
         {
+            ViewBag.Msg = message;
             return View();
         }
 
@@ -30,8 +31,9 @@ namespace EpamInternetProvider.Areas.Security.Controllers
             return RedirectToAction("Index", "Home", new {area = "Common"});
         }
 
-        public ActionResult Registration()
+        public ActionResult Registration(string message = "")
         {
+            ViewBag.Msg = message;
             return View();
         }
 

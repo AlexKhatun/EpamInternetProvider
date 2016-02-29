@@ -4,7 +4,7 @@
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<h1>@ViewBag.Msg</h1>
 <h2>Авторизация</h2>
 
 @using (Html.BeginForm("Login", "Security", FormMethod.Post)) 

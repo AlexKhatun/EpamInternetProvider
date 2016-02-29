@@ -26,26 +26,30 @@ namespace EpamInternetProvider.Areas.Common.Controllers
             return View();
         }
 
-        public ActionResult SeeServicesList()
+        public ActionResult SeeServicesList(string message = "")
         {
+            ViewBag.Msg = message;
             var services = db.ServiceDb.GetAll();
             return View(services);
         }
 
-        public ActionResult SeeServiceDetails(int id)
+        public ActionResult SeeServiceDetails(int id, string message = "")
         {
+            ViewBag.Msg = message;
             var service = db.ServiceDb.GetById(id);
             return View(service);
         }
 
-        public ActionResult SeeRateList()
+        public ActionResult SeeRateList(string message = "")
         {
+            ViewBag.Msg = message;
             var rates = db.RateDb.GetAll();
             return View(rates);
         }
 
-        public ActionResult SeeRateDetails(int id)
+        public ActionResult SeeRateDetails(int id, string message = "")
         {
+            ViewBag.Msg = message;
             var rate = db.RateDb.GetById(id);
             return View(rate);
         }

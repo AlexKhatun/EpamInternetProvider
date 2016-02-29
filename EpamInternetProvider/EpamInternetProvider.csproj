@@ -163,6 +163,7 @@
     <Compile Include="Areas\Common\CommonAreaRegistration.cs" />
     <Compile Include="Areas\Security\Controllers\SecurityController.cs" />
     <Compile Include="Areas\Security\SecurityAreaRegistration.cs" />
+    <Compile Include="Areas\Users\Controllers\SubscribeController.cs" />
     <Compile Include="Areas\Users\Controllers\UserController.cs" />
     <Compile Include="Areas\Users\UserAreaRegistration.cs" />
     <Compile Include="Areas\Common\Controllers\HomeController.cs" />
@@ -205,6 +206,8 @@
     <Content Include="Areas\Users\Views\User\EditPurse.cshtml" />
     <Content Include="Areas\Users\Views\User\EditAdress.cshtml" />
     <Content Include="Areas\Users\Views\User\AddFunse.cshtml" />
+    <Content Include="Areas\Users\Views\Subscribe\SeeSubscribeList.cshtml" />
+    <Content Include="Areas\Users\Views\Subscribe\SeeSubscribeDetails.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

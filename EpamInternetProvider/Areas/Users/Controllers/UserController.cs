@@ -17,8 +17,16 @@ namespace EpamInternetProvider.Areas.Users.Controllers
             return View("PersonalArea", user);
         }
 
-        public ActionResult AddPurse()
+        [HttpPost]
+        public ActionResult EditProfile(User user)
         {
+            db.UserDb.Update(user);
+            return RedirectToAction("EditProfile");
+        }
+
+        public ActionResult AddPurse(string message = "")
+        {
+            ViewBag.Msg = message;
             return View();
         }
 
@@ -30,8 +38,9 @@ namespace EpamInternetProvider.Areas.Users.Controllers
             return RedirectToAction("EditProfile", new {message = "Кошелек успешно добавлен"});
         }
 
-        public ActionResult EditPurse()
+        public ActionResult EditPurse(string message = "")
         {
+            ViewBag.Msg = message;
             var purse = db.PurseDb.GetAll().First(x => x.User.Email == User.Identity.Name);
             return View(purse);
         }
@@ -45,8 +54,9 @@ namespace EpamInternetProvider.Areas.Users.Controllers
             return RedirectToAction("EditProfile");
         }
 
-        public ActionResult AddAdress()
+        public ActionResult AddAdress(string message = "")
         {
+            ViewBag.Msg = message;
             return View();
         }
 
@@ -58,8 +68,9 @@ namespace EpamInternetProvider.Areas.Users.Controllers
             return RedirectToAction("EditProfile", new {message = "Адрес записан"});
         }
 
-        public ActionResult EditAdress()
+        public ActionResult EditAdress(string message = "")
         {
+            ViewBag.Msg = message;
             var adress = db.AdressDb.GetAll().First(x => x.User.Email == User.Identity.Name);
             return View(adress);
         }
@@ -72,8 +83,9 @@ namespace EpamInternetProvider.Areas.Users.Controllers
             return RedirectToAction("EditProfile");
         }
 
-        public ActionResult AddFunse()
+        public ActionResult AddFunse(string message = "")
         {
+            ViewBag.Msg = message;
             //Тут должно быть подключение к банку
             return View();
         }

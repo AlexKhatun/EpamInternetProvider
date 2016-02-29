@@ -18,8 +18,9 @@ namespace EpamInternetProvider.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult SeeListUnregUsers()
+        public ActionResult SeeListUnregUsers(string message = "")
         {
+            ViewBag.Msg = message;
             return View("ListUnregUsers", db.UserDb.GetAll().Where(x => x.IsRegister == false));
         }
 
