@@ -1,11 +1,12 @@
 ﻿@model BOL.Models.User
 
 @{
-    ViewBag.Title = "Personal Area";
+    ViewBag.Title = "Личный кабинет";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h1>@ViewBag.Msg</h1>
 <h2>Личный кабинет</h2>
+<h2>@ViewBag.Blocked</h2>
 
 @using (Html.BeginForm("EditProfile", "User", FormMethod.Post))
 {
@@ -65,6 +66,9 @@
     {
         @Html.ActionLink("Сменить название кошелька", "EditPurse")
     }
+
+    @Html.ActionLink("Пополнить счет", "AddFunse", "User")
+    @Html.ActionLink("Мои подписки", "SeeSubscribeList", "Subscribe")
     @Html.ActionLink("Назад", "Index", new {area = "Common", controller = "Home"})
 </p>
 

@@ -17,14 +17,14 @@ namespace BOL.Models
         public int UserId { get; set; }
 
         [DisplayName("Пользователь")]
-        public User User { get; set; }
+        public virtual User User { get; set; }
 
         [Required]
         [DisplayName("Id тарифа")]
         public int RateId { get; set; }
 
         [DisplayName("Тариф")]
-        public Rate Rate { get; set; }
+        public virtual Rate Rate { get; set; }
 
         [Required]
         [DisplayName("Дата начала подписки")]

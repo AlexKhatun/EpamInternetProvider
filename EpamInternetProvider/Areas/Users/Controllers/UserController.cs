@@ -14,6 +14,14 @@ namespace EpamInternetProvider.Areas.Users.Controllers
         public ActionResult EditProfile(string message = "")
         {
             var user = db.UserDb.GetAll().First(x => x.Email == HttpContext.User.Identity.Name);
+            if (user.Role.Title == "Blocked")
+            {
+                ViewBag.Blocked = "Пополните счет!";
+            }
+            else
+            {
+                ViewBag.Blocked = "";
+            }
             return View("PersonalArea", user);
         }
 

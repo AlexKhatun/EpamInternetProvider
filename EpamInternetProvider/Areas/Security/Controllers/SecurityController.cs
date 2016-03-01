@@ -24,7 +24,7 @@ namespace EpamInternetProvider.Areas.Security.Controllers
         public ActionResult Login(User user)
         {
             user.Email = user.Email.ToLower();
-            if (Membership.ValidateUser(user.Email, user.Password))
+            if (Membership.ValidateUser(user.Email, user.Password) && db.UserDb.GetAll().First(x=>x.Email == user.Email).IsRegister)
             {
                 FormsAuthentication.SetAuthCookie(user.Email, true);
             }
@@ -49,7 +49,6 @@ namespace EpamInternetProvider.Areas.Security.Controllers
             {
                 return RedirectToAction("Index", "Home", new { area = "Common", message = ViewBag.Msg });
             }
-            FormsAuthentication.SetAuthCookie(user.Email, true);
             return RedirectToAction("Index", "Home", new { area = "Common", message = ViewBag.Msg});
         }
 

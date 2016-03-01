@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<BOL.Models.User>
 
 @{
-    ViewBag.Title = "ListUnregUsers";
+    ViewBag.Title = "Список незарегистрированных пользователей";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h1>@ViewBag.Msg</h1>
@@ -10,16 +10,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Имя", "SeeListUnregUsers", new { sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "FirstName", page = ViewBag.Page ?? "1" })
+            @Html.ActionLink("Имя", "SeeListUnregUsers", new { sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "FirstName"})
         </th>
         <th>
-            @Html.ActionLink("Фамилия", "SeeListUnregUsers", new { sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "LastName", page = ViewBag.Page ?? "1" })
+            @Html.ActionLink("Фамилия", "SeeListUnregUsers", new { sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "LastName"})
         </th>
         <th>
-            @Html.ActionLink("Email", "SeeListUnregUsers", new { sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "Email", page = ViewBag.Page ?? "1" })
+            @Html.ActionLink("Email", "SeeListUnregUsers", new { sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "Email"})
         </th>
         <th>
-            @Html.ActionLink("Дата регистрации", "SeeListUnregUsers", new { sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "RegisterDate", page = ViewBag.Page ?? "1" })
+            @Html.ActionLink("Дата регистрации", "SeeListUnregUsers", new { sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "RegisterDate"})
         </th>
         <th></th>
     </tr>
@@ -46,11 +46,3 @@
     }
 
 </table>
-
-@{
-    double pages = ViewBag.Pages;
-}
-@for (int i = 0; i < pages; i++)
-{
-    @Html.ActionLink((i+1).ToString() +  " ", "SeeListUnregUsers", new { sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "FirstName", page = i })
-}

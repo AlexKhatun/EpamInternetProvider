@@ -17,13 +17,11 @@ namespace EpamInternetProvider.Areas.Users.Controllers
             var subscribes = db.SubscribeDb.GetAll().Where(x => x.User.Email == User.Identity.Name);
             return View(subscribes);
         }
-
-        [HttpPost]
-        public ActionResult AddSubscribe(Rate rate)
+        public ActionResult AddSubscribe(int id)
         {
             Subscribe subscribe = new Subscribe
             {
-                RateId = rate.RateId,
+                RateId = id,
                 SubscribeDate = DateTime.Now,
                 UserId = db.UserDb.GetAll().First(x => x.Email == User.Identity.Name).UserId
             };

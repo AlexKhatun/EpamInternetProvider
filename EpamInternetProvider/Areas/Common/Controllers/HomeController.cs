@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web.Mvc;
 using System.Web.Services.Description;
 using EpamInternetProvider.Controllers;
@@ -28,7 +30,7 @@ namespace EpamInternetProvider.Areas.Common.Controllers
             return View();
         }
 
-        public ActionResult SeeServicesList(string sortOrder, string sortBy, string page, string message = "")
+        public ActionResult SeeServicesList(string sortOrder, string sortBy, string message = "")
         {
             var services = db.ServiceDb.GetAll();
             ViewBag.Msg = message;
@@ -65,10 +67,10 @@ namespace EpamInternetProvider.Areas.Common.Controllers
                 default:
                     break;
             }
-            ViewBag.Pages = Math.Ceiling((double)(db.RateDb.GetAll().Count() / 2));
-            int myPage = int.Parse(page ?? "1");
-            ViewBag.Page = page;
-            services = services.Skip((myPage - 1) * 2).Take(2).ToList();
+            //ViewBag.Pages = Math.Ceiling((double)(db.ServiceDb.GetAll().Count() / 2));
+            //int myPage = int.Parse(page ?? "1");
+            //ViewBag.Page = page;
+            //services = services.Skip((myPage - 1) * 2).Take(2).ToList();
             return View(services);
         }
 
@@ -79,8 +81,9 @@ namespace EpamInternetProvider.Areas.Common.Controllers
             return View(service);
         }
 
-        public ActionResult SeeRateList(string sortOrder, string sortBy, string page, string message = "")
+        public ActionResult SeeRateList(string sortOrder, string sortBy, string message = "")
         {
+            ViewBag.Purse = db.UserDb.GetAll().First(x => x.Email == User.Identity.Name).Purses.Count;
             var rates = db.RateDb.GetAll();
             ViewBag.Msg = message;
             ViewBag.SortBy = sortBy;
@@ -129,18 +132,24 @@ namespace EpamInternetProvider.Areas.Common.Controllers
                 default:
                     break;
             }
-            ViewBag.Pages = Math.Ceiling((double)(db.RateDb.GetAll().Count() / 2));
-            int myPage = int.Parse(page ?? "1");
-            ViewBag.Page = page;
-            rates = rates.Skip((myPage - 1) * 2).Take(2).ToList();
+            //ViewBag.Pages = Math.Ceiling((double)(db.RateDb.GetAll().Count() / 2));
+            //int myPage = int.Parse(page ?? "1");
+            //ViewBag.Page = page;
+            //rates = rates.Skip((myPage - 1) * 2).Take(2).ToList();
             return View(rates);
         }
 
         public ActionResult SeeRateDetails(int id, string message = "")
         {
+            ViewBag.Id = id;
             ViewBag.Msg = message;
             var rate = db.RateDb.GetById(id);
             return View(rate);
+        }
+
+        public FileResult DownloadListOfRates()
+        {
+            return File("C:\\Users\\Alex\\Desktop\\EpamInternetProvider\\EpamInternetProvider\\App_Data\\СписокЗадач.txt", "application/txt");
         }
     }
 }

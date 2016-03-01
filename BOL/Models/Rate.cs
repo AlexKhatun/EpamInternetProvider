@@ -21,7 +21,7 @@ namespace BOL.Models
         public string Title { get; set; }
 
         [DisplayName("Услуга")]
-        public Service Service { get; set; }
+        public virtual Service Service { get; set; }
 
         [Required]
         [DisplayName("Цена")]

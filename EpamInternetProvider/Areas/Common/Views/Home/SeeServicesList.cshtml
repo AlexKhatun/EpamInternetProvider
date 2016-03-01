@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<BOL.Models.Service>
 
 @{
-    ViewBag.Title = "SeeServicesList";
+    ViewBag.Title = "Список услуг";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h1>@ViewBag.Msg</h1>
@@ -10,16 +10,18 @@
 <p>
     @if (User.IsInRole("Admin"))
     {
-        @Html.ActionLink("Create New", "AddService", new {area = "Admin", controller = "Admin"})
+        @Html.ActionLink("Создать", "AddService", new {area = "Admin", controller = "Admin"})
     }
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Название услуги", "SeeServicesList", new { sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "Title", page = ViewBag.Page ?? "1" })
+            @*@Html.DisplayNameFor(model=>model.Title)*@
+            @Html.ActionLink("Название услуги", "SeeServicesList", new { sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "Title"})
         </th>
         <th>
-            @Html.ActionLink("Тип услуги", "SeeServiceDetails", new { sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "ServiceTypeTitle", page = ViewBag.Page ?? "1" })
+            @*@Html.DisplayNameFor(model=>model.ServiceType.Title)*@
+            @Html.ActionLink("Тип услуги", "SeeServiceDetails", new { sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "ServiceTypeTitle"})
 
 
         </th>
@@ -38,25 +40,18 @@
             @if (User.IsInRole("Admin"))
             {
                 
-                @Html.ActionLink("Edit", "EditService", new {area = "Admin", controller = "Admin", id = item.ServiceId})                
+                @Html.ActionLink("Редактировать", "EditService", new {area = "Admin", controller = "Admin", id = item.ServiceId})                
                 <span>|</span>
             }
             
-            @Html.ActionLink("Details", "SeeServiceDetails", new {id = item.ServiceId})
+            @Html.ActionLink("Детали", "SeeServiceDetails", new {id = item.ServiceId})
             @if (User.IsInRole("Admin"))
             {
                 <span>|</span>
-                @Html.ActionLink("Delete", "DeleteService", new {area = "Admin",controller = "Admin" ,id = item.ServiceId})
+                @Html.ActionLink("Удалить", "DeleteService", new {area = "Admin",controller = "Admin" ,id = item.ServiceId})
             }
         </td>
     </tr>
 }
 
 </table>
-@{
-    double pages = ViewBag.Pages;
-}
-@for (int i = 0; i < pages; i++)
-{
-    @Html.ActionLink((i + 1).ToString() + " ", "SeeRateList", new { sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "FirstName", page = i })
-}

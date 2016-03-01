@@ -19,7 +19,7 @@ namespace BOL.Models
         public int UserId { get; set; }
 
         [DisplayName("Пользователь")]
-        public User User { get; set; }
+        public virtual User User { get; set; }
 
         [Required]
         [DisplayName("Город")]

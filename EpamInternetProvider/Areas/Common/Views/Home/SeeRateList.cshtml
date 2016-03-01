@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<BOL.Models.Rate>
 
 @{
-    ViewBag.Title = "SeeRateList";
+    ViewBag.Title = "Список тарифов";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h1>@ViewBag.Msg</h1>
@@ -10,19 +10,22 @@
 <p>
     @if (User.IsInRole("Admin"))
     {
-        @Html.ActionLink("Create New", "AddRate", new {area = "Admin", controller = "Admin"})
+        @Html.ActionLink("Создать", "AddRate", new {area = "Admin", controller = "Admin"})
     }
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Название услуги", "SeeRateList", new {sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "ServiceTitle", page = ViewBag.Page ?? "1"})
+            @*@Html.DisplayNameFor(model=>model.Service.Title)*@
+            @Html.ActionLink("Название услуги", "SeeRateList", new {sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "ServiceTitle"})
         </th>
         <th>
-            @Html.ActionLink("Название тарифа", "SeeRateList", new {sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "Title", page = ViewBag.Page ?? "1"})
+           @* @Html.DisplayNameFor(model => model.Title)*@
+            @Html.ActionLink("Название тарифа", "SeeRateList", new {sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "Title"})
         </th>
         <th>
-            @Html.ActionLink("Цена", "SeeRateList", new {sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "Price", page = ViewBag.Page ?? "1"})
+           @* @Html.DisplayNameFor(model => model.Price)*@
+            @Html.ActionLink("Цена", "SeeRateList", new {sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "Price"})
         </th>
         <th></th>
     </tr>
@@ -46,7 +49,6 @@
                     @Html.ActionLink("Редактировать", "EditRate", new {area = "Admin", controller = "Admin", id = item.RateId})
                     <span>|</span>
                 }
-
                 @Html.ActionLink("Детали", "SeeRateDetails", new {id = item.RateId})
                 @if (User.IsInRole("Admin"))
                 {
@@ -59,12 +61,5 @@
 
 </table>
 
-@{
-    double pages = ViewBag.Pages;
-}
-@for (int i = 0; i < pages; i++)
-{
-    @Html.ActionLink((i + 1).ToString() + " ", "SeeRateList", new { sortOrder = (ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc")), sortBy = "FirstName", page = i })
-}
 
 

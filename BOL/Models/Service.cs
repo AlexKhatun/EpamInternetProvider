@@ -21,7 +21,7 @@ namespace BOL.Models
         public int ServiceTypeId { get; set; }
 
         [DisplayName("Тип услуги")]
-        public ServiceType ServiceType { get; set; }
+        public virtual ServiceType ServiceType { get; set; }
 
         [DisplayName("Список тарифов")]
         public virtual List<Rate> Rates { get; set; } 

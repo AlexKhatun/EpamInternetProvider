@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BLL;
 using BOL.Models;
 using EpamInternetProvider.Controllers;
 
@@ -18,7 +19,7 @@ namespace EpamInternetProvider.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult SeeListUnregUsers(string sortOrder, string sortBy, string page, string message = "")
+        public ActionResult SeeListUnregUsers(string sortOrder, string sortBy, string message = "")
         {
             ViewBag.Msg = message;
             ViewBag.SortBy = sortBy;
@@ -81,10 +82,6 @@ namespace EpamInternetProvider.Areas.Admin.Controllers
                 default:
                     break;
             }
-            ViewBag.Pages = Math.Ceiling((double)(db.UserDb.GetAll().Count(x => x.IsRegister == false) / 2));
-            int myPage = int.Parse(page ?? "1");
-            ViewBag.Page = page;
-            users = users.Skip((myPage - 1)*2).Take(2);
             return View("ListUnregUsers", users);
         }
 
@@ -166,6 +163,7 @@ namespace EpamInternetProvider.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AddRate(Rate rate)
         {
+            TxtCreator tx = new TxtCreator();
             var result = db.RateDb.Insert(rate);
             if (result)
             {
