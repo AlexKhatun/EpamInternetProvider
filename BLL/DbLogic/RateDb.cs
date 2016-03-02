@@ -33,6 +33,10 @@ namespace BLL.DbLogic
         {
             try
             {
+                if (rate.PriceStartDate >= rate.PriceFinishDate || rate.PriceFinishDate <= DateTime.Now)
+                {
+                    throw new Exception();
+                }
                 rateDb.Insert(rate);
                 return true;
             }
@@ -46,6 +50,10 @@ namespace BLL.DbLogic
         {
             try
             {
+                if (rate.PriceStartDate >= rate.PriceFinishDate || rate.PriceFinishDate <= DateTime.Now)
+                {
+                    throw new Exception();
+                }
                 rateDb.Update(rate);
                 return true;
             }

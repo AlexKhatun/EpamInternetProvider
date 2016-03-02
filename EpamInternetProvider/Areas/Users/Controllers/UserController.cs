@@ -94,7 +94,6 @@ namespace EpamInternetProvider.Areas.Users.Controllers
         public ActionResult AddFunse(string message = "")
         {
             ViewBag.Msg = message;
-            //Тут должно быть подключение к банку
             return View();
         }
 
@@ -103,7 +102,7 @@ namespace EpamInternetProvider.Areas.Users.Controllers
         {
             var currentPurse = db.PurseDb.GetAll().First(x => x.User.Email == User.Identity.Name);
             currentPurse.Money += purse.Money;
-            db.PurseDb.Update(purse);
+            db.PurseDb.Update(currentPurse);
             return RedirectToAction("EditProfile");
         }
     }

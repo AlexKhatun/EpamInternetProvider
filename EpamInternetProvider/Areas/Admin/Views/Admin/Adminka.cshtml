@@ -6,6 +6,6 @@
 
 <h2>Adminka</h2>
 <h3>@ViewBag.Msg</h3>
-@Html.ActionLink("Заявки на регистрацию", "SeeListUnregUsers")
-@Html.ActionLink("Добавить услугу", "AddService")
-@Html.ActionLink("Добавить тариф", "AddRate")
+@Html.ActionLink("Заявки на регистрацию", "SeeListUnregUsers", new { controller = "Admin" }, new { @class = "btn btn-default" })
+@Html.ActionLink("Добавить услугу", "AddService", new { controller = "Admin" }, new { @class = "btn btn-default" })
+@Html.ActionLink("Добавить тариф", "AddRate", new { controller = "Admin" }, new { @class = "btn btn-default" })

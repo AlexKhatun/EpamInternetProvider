@@ -29,7 +29,13 @@ namespace DAL.Concrete
 
         public void Update(Adress adress)
         {
-            db.Entry(adress).State = EntityState.Modified;
+            var a = db.Adress.Find(adress.AdressId);
+            a.City = adress.City;
+            a.Street = adress.Street;
+            a.Flat = adress.Flat;
+            a.PhoneNumber = adress.PhoneNumber;
+            a.House = a.House;
+            //db.Entry(adress).State = EntityState.Modified;
             this.Save();
         }
 

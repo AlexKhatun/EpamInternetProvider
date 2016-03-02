@@ -29,7 +29,10 @@ namespace DAL.Concrete
 
         public void Update(Purse purse)
         {
-            db.Entry(purse).State = EntityState.Modified;
+            var p = db.Purse.Find(purse.PurseId);
+            p.Money = purse.Money;
+            p.Title = purse.Title;
+            //db.Entry(purse).State = EntityState.Modified;
             this.Save();
         }
 

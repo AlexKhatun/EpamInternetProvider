@@ -5,6 +5,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Web.Services.Description;
 using BOL.Models;
 using EpamInternetProvider.Controllers;
 
@@ -27,8 +28,9 @@ namespace EpamInternetProvider.Areas.Security.Controllers
             if (Membership.ValidateUser(user.Email, user.Password) && db.UserDb.GetAll().First(x=>x.Email == user.Email).IsRegister)
             {
                 FormsAuthentication.SetAuthCookie(user.Email, true);
+                return RedirectToAction("Index", "Home", new { area = "Common" , message = "Вы успешно вошли в систему!"});
             }
-            return RedirectToAction("Index", "Home", new {area = "Common"});
+            return RedirectToAction("Login", "Security", new {area = "Security", message = "Оишбка входа!"});
         }
 
         public ActionResult Registration(string message = "")

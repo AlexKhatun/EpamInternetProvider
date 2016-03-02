@@ -83,7 +83,14 @@ namespace EpamInternetProvider.Areas.Common.Controllers
 
         public ActionResult SeeRateList(string sortOrder, string sortBy, string message = "")
         {
-            ViewBag.Purse = db.UserDb.GetAll().First(x => x.Email == User.Identity.Name).Purses.Count;
+            try
+            {
+                ViewBag.Purse = db.UserDb.GetAll().First(x => x.Email == User.Identity.Name).Purses.Count;
+            }
+            catch
+            {
+                ViewBag.Purse = 0;
+            }
             var rates = db.RateDb.GetAll();
             ViewBag.Msg = message;
             ViewBag.SortBy = sortBy;

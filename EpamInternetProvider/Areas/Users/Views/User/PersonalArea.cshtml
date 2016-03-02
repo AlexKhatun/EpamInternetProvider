@@ -1,5 +1,5 @@
 ﻿@model BOL.Models.User
-
+<script src="~/Scripts/jquery-1.10.2.js"></script>
 @{
     ViewBag.Title = "Личный кабинет";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -51,24 +51,24 @@
 <p>
     @if (Model.Adresses.Count == 0)
     {
-        @Html.ActionLink("Прикрепить адрес", "AddAdress")
+        @Html.ActionLink("Прикрепить адрес", "AddAdress", new { controller = "User" }, new { @class = "btn btn-danger" })
     }
     else
     {
-        @Html.ActionLink("Редактировать адрес", "EditAdress")
+        @Html.ActionLink("Редактировать адрес", "EditAdress", new { controller = "User" }, new { @class = "btn btn-default" })
     }
 
     @if (Model.Purses.Count == 0)
     {
-        @Html.ActionLink("Прикрепить кошелек", "AddPurse")
+        @Html.ActionLink("Прикрепить кошелек", "AddPurse", new {controller = "User"}, new {@class = "btn btn-danger"})
     }
     else
     {
-        @Html.ActionLink("Сменить название кошелька", "EditPurse")
+        @Html.ActionLink("Сменить название кошелька", "EditPurse", new { controller = "User" }, new { @class = "btn btn-default" })
     }
 
-    @Html.ActionLink("Пополнить счет", "AddFunse", "User")
-    @Html.ActionLink("Мои подписки", "SeeSubscribeList", "Subscribe")
-    @Html.ActionLink("Назад", "Index", new {area = "Common", controller = "Home"})
+    @Html.ActionLink("Пополнить счет", "AddFunse", "User", new { controller = "User" }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Мои подписки", "SeeSubscribeList", "Subscribe", new { controller = "User" }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Назад", "Index", new {area = "Common", controller = "Home"}, new {@class = "btn btn-default"})
 </p>
 

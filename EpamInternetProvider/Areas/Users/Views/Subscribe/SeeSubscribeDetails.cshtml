@@ -8,7 +8,7 @@
 <h2>Детали подписки</h2>
 
 <div>
-    <h4>Subscribe</h4>
+    <h4>Подписка</h4>
     <hr />
     <dl class="dl-horizontal">
 
@@ -39,6 +39,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.SubscribeId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Отписаться", "DeleteSubscribe", new { id = Model.SubscribeId }) |
 </p>
